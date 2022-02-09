@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<head>
+    <title>simple calculator</title>
+    <style>
+        body {
+            background-color: darkblue;
+        }
+        
+        .f {
+            background-color: grey;
+            border: solid;
+            width: 270px;
+            height: 327px;
+            margin: auto;
+            border-radius: 10px;
+        }
+        
+        input[type=button] {
+            width: 40px;
+            border: solid;
+            height: 40px;
+            margin: 5px;
+            font-size: medium;
+        }
+        
+        input[type=text] {
+            width: 195px;
+            height: 28px;
+            font-size: large;
+            border: solid;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        #fin {
+            width: 192px;
+            margin: 5px;
+        }
+        
+        input[type=reset] {
+            border: solid;
+            width: 128px;
+            height: 31px;
+            font-size: 18px;
+            border-bottom-left-radius: 8px;
+        }
+        
+        #del {
+            border: solid;
+            width: 65px;
+            height: 31px;
+            font-size: 18px;
+            border-bottom-right-radius: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="f">
+        <form name="fm" align="center">
+            <br>
+            <input type="text" name="a" id="tex"><br><br>
+            <input type="button" value="1" onclick="fm.a.value+='1'">
+            <input type="button" value="2" onclick="fm.a.value+='2'">
+            <input type="button" value="3" onclick="fm.a.value+='3'">
+            <input type="button" value="+" onclick="fm.a.value+='+'"><br>
+            <input type="button" value="4" onclick="fm.a.value+='4'">
+            <input type="button" value="5" onclick="fm.a.value+='5'">
+            <input type="button" value="6" onclick="fm.a.value+='6'">
+            <input type="button" value="-" onclick="fm.a.value+='-'"><br>
+            <input type="button" value="7" onclick="fm.a.value+='7'">
+            <input type="button" value="8" onclick="fm.a.value+='8'">
+            <input type="button" value="9" onclick="fm.a.value+='9'">
+            <input type="button" value="*" onclick="fm.a.value+='*'"><br>
+            <input type="button" value="." onclick="fm.a.value+='.'">
+            <input type="button" value="0" onclick="fm.a.value+='0'">
+            <input type="button" value="/" onclick="fm.a.value+='/'">
+            <input type="button" value="=" onclick="fm.a.value=eval(fm.a.value)"><br>
+            <span id="fin">&nbsp;
+                <input type="reset" value="clear all" onclick="fm.a.value+=''">
+                <input type="button" value="del" id="del" onclick="fm.a.value=dele()">
+            </span>
+            <script>
+                function dele() {
+                    var v = document.getElementById("tex").value;
+                    var ans = v.slice(0, -1);
+                    return ans;
+
+                }
+            </script>
+
+
+        </form>
+    </div>
+</body>
