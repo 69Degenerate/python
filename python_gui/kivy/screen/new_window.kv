@@ -36,6 +36,16 @@ WindowManager:
             size_hint:None,None
             size:root.width*.07,root.height*.05
             on_press:g.exe('help')
+        Button:# button for testing purposes
+            id:f
+            text:'sd'
+            font_size:12
+            # pos_hint:{'x':.01,'y':.8}
+            size_hint:None,None
+            size:root.width*.0,root.height*.0
+            on_press:
+                app.root.current = "first"
+                root.manager.transition.direction = "left"
         Label:#text lebel
             id:l
             text:''
