@@ -5,21 +5,27 @@
 <CalcGridLayout>:
 	id: calculator
 	display: op
-	rows: 6
+	greet:o
+	rows: 10
 	padding: 10
 	spacing: 10
 
 
+	#BoxLayout:
+		
+
+	BoxLayout:
+		CustButton:
+			text: "7"
+			on_press: calculator.callback(op.text)
+	BoxLayout:
+	BoxLayout:
+		Label:
+			id:o
+			text:"dasfasd"
 	BoxLayout:
 		TextInput:
 			id: op
-			font_size: 32
-			multiline: False
-	BoxLayout:
-	BoxLayout:
-	BoxLayout:
-		TextInput:
-			id: o
 			font_size: 32
 			multiline: False
 
@@ -28,5 +34,5 @@
 		CustButton:
 			font_size: 20
 			text: "query"
-			on_press: calculator.cal(o.text)
+			on_press: calculator.callback(op.text)
 

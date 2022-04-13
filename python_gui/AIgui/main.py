@@ -7,22 +7,12 @@ from kivy.config import Config
 Config.set('graphics', 'resizable', 1)
 
 class CalcGridLayout(GridLayout):
-	def calculate(self, calculation):
-		if calculation:
-			try:
-				# Solve formula and display it in entry
-				# which is pointed at by display
-				self.display.text = str(calculation)
-			except Exception:
-				self.display.text = "Error"
 
 	def cal(self, con):
-		if con:
-			try:
-				self.display.text = str(con)
-                
-			except Exception:
-				self.display.text = "Error"
+		return str(con)
+	
+	def callback(self,call):
+		self.greet.text = str(call)
 
 
 
