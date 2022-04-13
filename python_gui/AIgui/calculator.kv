@@ -1,0 +1,32 @@
+# Custom button
+<CustButton@Button>:
+	font_size: 32
+
+<CalcGridLayout>:
+	id: calculator
+	display: op
+	rows: 6
+	padding: 10
+	spacing: 10
+
+
+	BoxLayout:
+		TextInput:
+			id: op
+			font_size: 32
+			multiline: False
+	BoxLayout:
+	BoxLayout:
+	BoxLayout:
+		TextInput:
+			id: o
+			font_size: 32
+			multiline: False
+
+	BoxLayout:
+		orientation:'vertical'
+		CustButton:
+			font_size: 20
+			text: "query"
+			on_press: calculator.cal(o.text)
+
