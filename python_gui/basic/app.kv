@@ -1,42 +1,25 @@
-# <bu>:
-#     canvas:
-#         Rectangle:
-#             pos: self.x+50,self.y+50
-#             size:100,100
-    
-#     Button:
-#         pos: root.x+50,50
-#         size_hint:None,None
-#         size:200,200
-#         backgroung_color:1,0,0,1
-
 <game>:
+    
     FloatLayout:
         pos:0,0
         size:root.width,root.height
-        
-
-
+            
         GridLayout:
-            cols:2
-            pos_hint:{'x':.3,'y':.3}
+            rows:3
+            pos_hint:{'x':.15,'y':0.05}
             size_hint:None,None
-            size:root.width*.4,root.width*.4
+            size:root.width*.7,root.height*.25
+            TextInput:
+                id:'id'
+                text:''
 
             Button:
-                text: 'Button1'
+                text: 'Enter the query'
             Button:
-                text: 'Button2'
-            Button:
-                text: 'Button3'
-            Button:
-                text: 'Button4'
-
-        # Button:
-        #     text: 'Button1'
-        #     pos_hint:{'x':.1,'y':.1}
-        #     size_hint:.8,.1
-        # Button:
-        #     text:'Button2'
-        #     pos_hint:{'x':.1,'y':.6}
-        #     size_hint:.8,.1
+                text: 'speak'
+                color:'yellow'
+                background_color:'red'
+            # Button:
+            #     text: 'Button3'
+            # Button:
+            #     text: 'Button4'
