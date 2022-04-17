@@ -8,6 +8,7 @@
 <CalcGridLayout>:
 	id: calculator
 	display: entry
+	column:4
 	rows: 6
 	padding: 10
 	spacing: 10
@@ -84,7 +85,13 @@
 			text: "/"
 			on_press: entry.text += self.text
 	BoxLayout:
+		spacing:10
 		CustButton:
-			font_size: 20
+			font_size: 15
 			text: "="
-			on_press: calculator.calculate(entry.text)	
+			on_press: calculator.calculate(entry.text)
+		CustButton:
+			column:4
+			text:"EXIT"
+			on_press: calculator.exit()
+

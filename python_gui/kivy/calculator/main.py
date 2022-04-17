@@ -23,6 +23,9 @@ class CalcGridLayout(GridLayout):
 			except Exception:
 				self.display.text = "Error"
 
+	def exit(self):
+		quit()
+
 
 class CalculatorApp(App):
 	def build(self):
