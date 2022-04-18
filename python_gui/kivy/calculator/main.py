@@ -10,8 +10,6 @@ class CalcGridLayout(GridLayout):
 	def calculate(self, calculation):
 		if calculation:
 			try:
-				# Solve formula and display it in entry
-				# which is pointed at by display
 				self.display.text = str(eval(calculation))
 			except Exception:
 				self.display.text = "Error"
