@@ -6,7 +6,8 @@ from kivy.uix.textinput import TextInput
 
 
 class game(Widget):
-    pass
+    def textt(self,call):
+        self.leb.text=str(call)
 
 
 class app(a):

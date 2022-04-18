@@ -1,25 +1,28 @@
 <game>:
-    
+    id:g
+    display:dis
+    leb:l
+
     FloatLayout:
         pos:0,0
         size:root.width,root.height
-            
         GridLayout:
-            rows:3
+            rows:4
             pos_hint:{'x':.15,'y':0.05}
             size_hint:None,None
             size:root.width*.7,root.height*.25
+            Label:
+                id:l
+                text:'test'
             TextInput:
-                id:'id'
+                id:dis
                 text:''
-
             Button:
                 text: 'Enter the query'
+                on_press:g.textt(dis.text)
             Button:
                 text: 'speak'
                 color:'yellow'
                 background_color:'red'
-            # Button:
-            #     text: 'Button3'
-            # Button:
-            #     text: 'Button4'
+                on_press:
+            
