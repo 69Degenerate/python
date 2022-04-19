@@ -44,7 +44,7 @@ class CalcGridLayout(GridLayout):
 			speak("Good Evining!")         
 		speak("i am friday, how may i help you?")         
 
-	def listen():#it takes user input as audio of microphone and returns output as string variable 'query'		
+	def listen():		
 		k = sr.Recognizer()
 		with sr.Microphone() as source:
 			print("Listening....")

@@ -11,20 +11,42 @@
                 pos: self.pos
                 size: self.size
                 source: "4.jpg"
+        Button:
+            text:'help'
+            pos_hint:{'x':.15,'y':.8}
+            size_hint:None,None
+            size:root.width*.15,root.height*.08
+            on_press:g.exe('help')
+        Label:
+            id:l
+            text:'test'
+            pos_hint:{'x':.4,'y':.5}
+            size_hint:None,None
+            size:root.width*.2,root.height*.3
+        Button:
+            text: 'EXIT'
+            color:'yellow'
+            background_color:'red'
+            pos_hint:{'x':.419,'y':.03}
+            size_hint:None,None
+            size:root.width*.15,root.height*.07
+            on_press:g.exe('quit')
+
         GridLayout:
             rows:4
-            pos_hint:{'x':.15,'y':0.05}
+            pos_hint:{'x':.15,'y':.15}
             size_hint:None,None
             size:root.width*.7,root.height*.25
-            Label:
-                id:l
-                text:'test'
+            # Label:
+            #     id:l
+            #     text:'test'
             TextInput:
                 id:dis
+                font_size: 20
                 text:''
             Button:
                 text: 'Enter the query'
-                on_press:g.textt(dis.text)
+                on_press:g.exe(dis.text)
             Button:
                 text: 'speak'
                 color:'yellow'
