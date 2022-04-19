@@ -18,17 +18,17 @@ import googletrans
 
 Config.set('graphics', 'resizable', 1)
 
+engine =pyttsx3.init()
+voices =engine.getProperty('voices')
+engine.setProperty('voice',voices[-1].id)
 
 class CalcGridLayout(GridLayout):
 		
-	engine =pyttsx3.init()
-	voices =engine.getProperty('voices')
-	engine.setProperty('voice',voices[-1].id)
 
 	def callback(self,call):
 		self.greet.text = str(call)
 		
-	def speak(audio):
+	def speak(self,audio):
 		engine.say(audio)
 		engine.runAndWait()
 
@@ -62,37 +62,34 @@ class CalcGridLayout(GridLayout):
 			return "None"
 		return query
 
-	def cal(self, con):		
-		if __name__ == "__main__":
-			wishme()
-			while True:
-				query=str(con)
+	def cal(self,con):		
+		# if __name__ == "__main__":
+		# 	wishme()
+		# 	while True:
+		query=str(con)
 				
-				if 'wikipedia' in query:
-						try:
-							speak('searching Wikipedia....')
-							query= query.replace("wikipedia","")
-							results = wikipedia.summary(query,sentences=1)
-							speak("Acording To Wikipedia")
-							speak(results)
-						except Exception as e:
-							print(e)
-							speak("sorry boss ,i am not able get any appropriate result from wikipedia")
-				
-				elif 'time' in query:
-						strtime= datetime.datetime.now().strftime("%H:%M:%S")
-						print(strtime)
-						speak(f"The time is {strtime}")
-						print(f"The time is {strtime}")
-				elif 'youtube' in query:
-						webbrowser.open('https://youtu.be/iik25wqIuFo')
-
-				elif'who are you' in query:
-						speak('I am veronica, i am A.i system of created by self,with love of you, i m a ho,such a disspointment to this dammed world') 
-				elif 'quit' in query:
-					break;
+		if 'wikipedia' in query:
+				try:
+					self.speak('searching Wikipedia....')
+					query= query.replace("wikipedia","")
+					results = wikipedia.summary(query,sentences=1)
+					self.speak("Acording To Wikipedia")
+					self.speak(results)
+				except Exception as e:
+					print(e)
+					self.speak("sorry boss ,i am not able get any appropriate result from wikipedia")
 		
-		# return str(con)
+		if 'time' in query:
+				strtime= datetime.datetime.now().strftime("%H:%M:%S")
+				print(strtime)
+				self.speak(f"The time is {strtime}")
+				print(f"The time is {strtime}")
+		if 'youtube' in query:
+				webbrowser.open('https://youtu.be/iik25wqIuFo')
+		if'who are you' in query:
+				self.speak('I am veronica, i am A.i system of created by self,with love of you, i m a ho,such a disspointment to this dammed world')
+		
+		
 
 class CalculatorApp(App):
 	def build(self):
