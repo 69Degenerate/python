@@ -13,16 +13,18 @@
                 source: "4.jpg"
         Button:
             text:'help'
-            pos_hint:{'x':.15,'y':.8}
+            font_size:12
+            pos_hint:{'x':.01,'y':.9}
             size_hint:None,None
-            size:root.width*.15,root.height*.08
+            size:root.width*.07,root.height*.05
             on_press:g.exe('help')
         Label:
             id:l
-            text:'test'
+            text:''
+            text_size:self.size
             pos_hint:{'x':.4,'y':.5}
             size_hint:None,None
-            size:root.width*.2,root.height*.3
+            size:root.width*.4,root.height*.3
         Button:
             text: 'EXIT'
             color:'yellow'
@@ -32,24 +34,26 @@
             size:root.width*.15,root.height*.07
             on_press:g.exe('quit')
 
-        GridLayout:
-            rows:4
-            pos_hint:{'x':.15,'y':.15}
+        TextInput:
+            id:dis
+            text:''
+            text_size:self.size
+            pos_hint:{'x':.01,'y':.7}
             size_hint:None,None
-            size:root.width*.7,root.height*.25
-            # Label:
-            #     id:l
-            #     text:'test'
-            TextInput:
-                id:dis
-                font_size: 20
-                text:''
-            Button:
-                text: 'Enter the query'
-                on_press:g.exe(dis.text)
-            Button:
-                text: 'speak'
-                color:'yellow'
-                background_color:'red'
-                on_press:
+            size:root.width*.27,root.height*.086
+        Button:
+            text: 'Enter the query'
+            on_press:g.exe(dis.text)
+            pos_hint:{'x':.01,'y':.64}
+            size_hint:None,None
+            size:root.width*.27,root.height*.06
+        Button:
+            text: 'speak'
+            color:'yellow'
+            background_color:'red'
+            on_press:
+            pos_hint:{'x':.05,'y':.57}
+            size_hint:None,None
+            size:root.width*.17,root.height*.06
+
             
