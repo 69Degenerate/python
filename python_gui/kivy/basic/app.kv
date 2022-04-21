@@ -2,7 +2,7 @@
     id:g
     display:dis
     leb:l
-
+    ti:clock
     FloatLayout:
         pos:0,0
         size:root.width,root.height
@@ -11,43 +11,58 @@
                 pos: self.pos
                 size: self.size
                 source: "4.jpg"
-        Button:
+        Button:#help button
             text:'help'
             font_size:12
             pos_hint:{'x':.01,'y':.9}
             size_hint:None,None
             size:root.width*.07,root.height*.05
             on_press:g.exe('help')
-        Label:
+        Label:#text lebel
             id:l
             text:''
             text_size:self.size
             pos_hint:{'x':.4,'y':.5}
             size_hint:None,None
             size:root.width*.4,root.height*.3
-        Button:
+        Label:#clock
+            id:clock
+            text:''
+            font_name: 'FreeMono'
+            markup:True
+            font_size:20
+            pos_hint:{'x':.85,'y':.03}
+            size_hint:None,None
+            size:root.width*.15,root.height*.07
+        Button:#EXIT button 
             text: 'EXIT'
             color:'yellow'
             background_color:'red'
             pos_hint:{'x':.419,'y':.03}
             size_hint:None,None
             size:root.width*.15,root.height*.07
-            on_press:g.exe('quit')
+            on_release:g.exe('quit')#root.anim(self)
+            on_press:root.anim(self)#g.exe('quit')
 
-        TextInput:
+        TextInput:#text box
             id:dis
             text:''
+            hint_text:'enter queries here'
+            foreground_color:'white'
+            # background_color:(0,0,0,0)
             text_size:self.size
             pos_hint:{'x':.01,'y':.7}
             size_hint:None,None
             size:root.width*.27,root.height*.086
-        Button:
+            background_color:'black'
+            opacity:.4
+        Button:#query button
             text: 'Enter the query'
             on_press:g.exe(dis.text)
             pos_hint:{'x':.01,'y':.64}
             size_hint:None,None
             size:root.width*.27,root.height*.06
-        Button:
+        Button:#speak button
             text: 'speak'
             color:'yellow'
             background_color:'red'
@@ -55,5 +70,6 @@
             pos_hint:{'x':.05,'y':.57}
             size_hint:None,None
             size:root.width*.17,root.height*.06
+            on_release:root.anim(self)
 
             

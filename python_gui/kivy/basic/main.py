@@ -12,7 +12,9 @@ from kivy.app import App as a
 from kivy.uix.button import Button as b
 from kivy.uix.widget import Widget
 from kivy.uix.textinput import TextInput
+from kivy.clock import Clock
 from kivy.core.image import Image
+from kivy.animation import Animation
 
 
 engine =pyttsx3.init()
@@ -96,12 +98,22 @@ class game(Widget):
                     self.speak('I am veronica, i am A.i system of created by self,with love of you, i m a ho,such a disspointment to this dammed world') 
         elif 'quit' in query:
             self.speak('have a great day')
+
             quit()
         else:
                 self.speak("please give appropriate query")
 
+    def anim(self,widget,*args):
+        animate=Animation(background_color=(0,0,0,0),d=1)
+        animate.start(widget)
+        
 
 
+    def update(self,*args):
+        self.ti.text= datetime.datetime.now().strftime("[b]%H:%M[/b]:%S")
+    def __init__(self, **kwargs):
+        super(game,self).__init__(**kwargs)
+        Clock.schedule_interval(self.update,1)
 
 
 
@@ -109,7 +121,7 @@ class app(a):
     def build(self):
         return game()
 
+app().run()
 
-
-if __name__=='__main__':
-    app().run()
+# if __name__=='__main__':
+#     app().run()
