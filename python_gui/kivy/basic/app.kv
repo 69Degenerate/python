@@ -6,6 +6,10 @@
     FloatLayout:
         pos:0,0
         size:root.width,root.height
+        #Image:
+        #   source:'4.jpg'
+        #   allow_stretch:True
+        #    keep_ratio:False
         canvas.before:
             Rectangle:
                 pos: self.pos
@@ -41,8 +45,8 @@
             pos_hint:{'x':.419,'y':.03}
             size_hint:None,None
             size:root.width*.15,root.height*.07
-            on_release:g.exe('quit')#root.anim(self)
-            on_press:root.anim(self)#g.exe('quit')
+            # on_release:g.exe('quit')#root.anim(self)
+            on_press:g.exe('quit')
 
         TextInput:#text box
             id:dis

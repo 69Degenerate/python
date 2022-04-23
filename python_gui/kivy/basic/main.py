@@ -97,6 +97,7 @@ class game(Widget):
         elif'who are you' in query:
                     self.speak('I am veronica, i am A.i system of created by self,with love of you, i m a ho,such a disspointment to this dammed world') 
         elif 'quit' in query:
+            self.anim()
             self.speak('have a great day')
 
             quit()
