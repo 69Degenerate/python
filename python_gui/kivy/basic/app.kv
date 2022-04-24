@@ -6,15 +6,22 @@
     FloatLayout:
         pos:0,0
         size:root.width,root.height
+        Image:
+            id: gif
+            source: '1.gif'
+            pos: self.pos
+            size: self.size
+            allow_stretch: True
+
         #Image:
         #   source:'4.jpg'
         #   allow_stretch:True
         #    keep_ratio:False
-        canvas.before:
-            Rectangle:
-                pos: self.pos
-                size: self.size
-                source: "4.jpg"
+        # canvas.before:
+        #     Rectangle:
+        #         pos: self.pos
+        #         size: self.size
+        #         source: "4.jpg"
         Button:#help button
             text:'help'
             font_size:12
@@ -27,38 +34,44 @@
             text:''
             text_size:self.size
             pos_hint:{'x':.4,'y':.5}
+            # center_x: root.center_x
+			# center_y: root.center_y
             size_hint:None,None
-            size:root.width*.4,root.height*.3
+            size:root.width*.35,root.height*.3
         Label:#clock
             id:clock
             text:''
-            font_name: 'FreeMono'
             markup:True
             font_size:20
             pos_hint:{'x':.85,'y':.03}
             size_hint:None,None
             size:root.width*.15,root.height*.07
         Button:#EXIT button 
-            text: 'EXIT'
-            color:'yellow'
-            background_color:'red'
-            pos_hint:{'x':.419,'y':.03}
+            # text: ''
+            # color:'yellow'
+            background_color:(0,0,0,0)
+
+            pos_hint:{'x':.9,'y':.9}
             size_hint:None,None
-            size:root.width*.15,root.height*.07
-            # on_release:g.exe('quit')#root.anim(self)
+            size:root.width*.07,root.height*.07
             on_press:g.exe('quit')
+            Image:
+                source:'1.png'
+                center_x: self.parent.center_x
+				center_y: self.parent.center_y
+                size:root.width*.07,root.height*.07
 
         TextInput:#text box
             id:dis
             text:''
             hint_text:'enter queries here'
             foreground_color:'white'
-            # background_color:(0,0,0,0)
+            background_color:(0,0,0,0)
             text_size:self.size
             pos_hint:{'x':.01,'y':.7}
             size_hint:None,None
             size:root.width*.27,root.height*.086
-            background_color:'black'
+            # background_color:'black'
             opacity:.4
         Button:#query button
             text: 'Enter the query'
