@@ -6,22 +6,17 @@
     FloatLayout:
         pos:0,0
         size:root.width,root.height
-        Image:
-            id: gif
-            source: '1.gif'
-            pos: self.pos
-            size: self.size
-            allow_stretch: True
+        # Image:
+        #     id: gif
+        #     source: '2.gif'
+        #     pos: self.pos
+        #     size: self.size
+        #     allow_stretch: True
 
-        #Image:
-        #   source:'4.jpg'
-        #   allow_stretch:True
-        #    keep_ratio:False
-        # canvas.before:
-        #     Rectangle:
-        #         pos: self.pos
-        #         size: self.size
-        #         source: "4.jpg"
+        Image:
+            source:'4.jpg'
+            allow_stretch:True
+            keep_ratio:False
         Button:#help button
             text:'help'
             font_size:12
@@ -43,14 +38,12 @@
             text:''
             markup:True
             font_size:20
-            pos_hint:{'x':.85,'y':.03}
+            # pos_hint:{'x':.4,'y':.9
+            pos_hint:{'center_x':0.5,'center_y':.97}
             size_hint:None,None
             size:root.width*.15,root.height*.07
         Button:#EXIT button 
-            # text: ''
-            # color:'yellow'
             background_color:(0,0,0,0)
-
             pos_hint:{'x':.9,'y':.9}
             size_hint:None,None
             size:root.width*.07,root.height*.07
@@ -64,29 +57,36 @@
         TextInput:#text box
             id:dis
             text:''
+            font_size:20
             hint_text:'enter queries here'
-            foreground_color:'white'
-            background_color:(0,0,0,0)
             text_size:self.size
-            pos_hint:{'x':.01,'y':.7}
+            pos_hint:{'x':.0,'y':.001}
             size_hint:None,None
-            size:root.width*.27,root.height*.086
-            # background_color:'black'
-            opacity:.4
+            size:root.width*.9,root.height*.06001
+            background_color:'white'
+
+
         Button:#query button
-            text: 'Enter the query'
+            text: ''
             on_press:g.exe(dis.text)
-            pos_hint:{'x':.01,'y':.64}
+            # pos_hint:{'center_x':,'center_y':.1}
+            pos_hint:{'x':.9,'y':.0}
+
             size_hint:None,None
-            size:root.width*.27,root.height*.06
+            size:root.width*.1,root.height*.06
+            
         Button:#speak button
-            text: 'speak'
-            color:'yellow'
-            background_color:'red'
+            # text: 'speak'
+            # color:'yellow'
+            background_color:(0,0,0,0)
             on_press:
-            pos_hint:{'x':.05,'y':.57}
+            pos_hint:{'x':.819,'y':.0}
             size_hint:None,None
-            size:root.width*.17,root.height*.06
-            on_release:root.anim(self)
+            # size:root.width*.05,root.height*.05
+            Image:
+                source:'mic1.png'
+                center_x: self.parent.center_x
+				center_y: self.parent.center_y
+                size:root.width*.05,root.height*.05
 
             
