@@ -17,14 +17,17 @@ from kivy.core.image import Image
 from kivy.animation import Animation
 
 
-engine =pyttsx3.init()
-voices =engine.getProperty('voices')
-engine.setProperty('voice',voices[-1].id)
+# engine =pyttsx3.init()
+# voices =engine.getProperty('voices')
+# engine.setProperty('voice',voices[-1].id)
 
 class game(Widget):
     def textt(self,call):
         self.leb.text=str(call)#
         self.ids.mic1.source='mic2.png'
+
+    def off(self):
+        self.ids.mic1.source='mic1.png'
 
 
     def speak(self,audio):

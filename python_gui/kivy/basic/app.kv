@@ -78,6 +78,7 @@
         Button:#speak button
             background_color:(0,0,0,0)
             on_press:g.textt(dis.text)
+            on_release:g.off()
             pos_hint:{'x':.85,'y':.0001}
             size_hint:None,None
             size:root.width*.05,root.height*.06
