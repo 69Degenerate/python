@@ -60,14 +60,14 @@
             font_size:20
             hint_text:'enter queries here'
             text_size:self.size
-            pos_hint:{'x':.0,'y':.001}
+            pos_hint:{'x':.0,'y':.0}
             size_hint:None,None
-            size:root.width*.9,root.height*.06001
+            size:root.width*.9,root.height*.06002
             background_color:'white'
 
 
         Button:#query button
-            text: ''
+            text: 'Enter'
             on_press:g.exe(dis.text)
             # pos_hint:{'center_x':,'center_y':.1}
             pos_hint:{'x':.9,'y':.0}
@@ -76,17 +76,18 @@
             size:root.width*.1,root.height*.06
             
         Button:#speak button
-            # text: 'speak'
-            # color:'yellow'
             background_color:(0,0,0,0)
-            on_press:
-            pos_hint:{'x':.819,'y':.0}
+            on_press:g.textt(dis.text)
+            pos_hint:{'x':.85,'y':.0001}
             size_hint:None,None
-            # size:root.width*.05,root.height*.05
+            size:root.width*.05,root.height*.06
             Image:
+                id:mic1
                 source:'mic1.png'
                 center_x: self.parent.center_x
 				center_y: self.parent.center_y
-                size:root.width*.05,root.height*.05
+                size:root.width*.04,root.height*.04
+                allow_stretch:False
+                keep_ratio:False
 
             

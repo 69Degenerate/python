@@ -24,6 +24,7 @@ engine.setProperty('voice',voices[-1].id)
 class game(Widget):
     def textt(self,call):
         self.leb.text=str(call)#
+        self.ids.mic1.source='mic2.png'
 
 
     def speak(self,audio):
