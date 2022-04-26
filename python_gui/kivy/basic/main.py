@@ -23,7 +23,7 @@ engine.setProperty('voice',voices[-1].id)
 
 class game(Widget):
     def textt(self,call):
-        self.leb.text=str(call)
+        self.leb.text=str(call)#
 
 
     def speak(self,audio):
