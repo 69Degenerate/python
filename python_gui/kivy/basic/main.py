@@ -27,7 +27,7 @@ class game(Widget):
         self.ids.mic1.source='mic2.png'
 
     def off(self):
-        self.ids.mic1.source='mic1.png'
+        self.ids.mic1.source='mic2.png'
 
 
     def speak(self,audio):
@@ -64,6 +64,7 @@ class game(Widget):
             print("Say that again please....")
             self.speak("Say that again please....")
             return "None"
+        self.ids.mic1.source='mic1.png'
         return query
 
 
