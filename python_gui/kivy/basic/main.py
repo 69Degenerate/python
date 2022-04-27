@@ -17,9 +17,9 @@ from kivy.core.image import Image
 from kivy.animation import Animation
 
 
-# engine =pyttsx3.init()
-# voices =engine.getProperty('voices')
-# engine.setProperty('voice',voices[-1].id)
+engine =pyttsx3.init()
+voices =engine.getProperty('voices')
+engine.setProperty('voice',voices[-1].id)
 
 class game(Widget):
     def textt(self,call):
