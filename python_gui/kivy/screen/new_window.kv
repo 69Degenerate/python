@@ -5,17 +5,11 @@ WindowManager:
 
 <FirstWindow>:
 	name: "first"
-
 	BoxLayout:
 		orientation: "vertical"
 		size: root.width, root.height
-
-		Label:
-			text: "First Screen"
-			font_size: 32
-
 		Button:
-			text: "Next Screen"
+			text: "click to continue"
 			font_size: 32
 			on_release: 
 				app.root.current = "second"
@@ -31,17 +25,10 @@ WindowManager:
     FloatLayout:
         pos:0,0
         size:root.width,root.height
-        # Image:
-        #     id: gif
-        #     source: '2.gif'
-        #     pos: self.pos
-        #     size: self.size
-        #     allow_stretch: True
-
-        # Image:
-        #     source:'4.jpg'
-        #     allow_stretch:True
-        #     keep_ratio:False
+        Image:
+            source:'4.jpg'
+            allow_stretch:True
+            keep_ratio:False
         Button:#help button
             text:'help'
             font_size:12
