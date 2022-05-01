@@ -30,4 +30,4 @@ class CalculatorApp(App):
 		return CalcGridLayout()
         
 calcApp = CalculatorApp()
-calcApp.run()
+

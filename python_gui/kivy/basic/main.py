@@ -15,16 +15,17 @@ from kivy.uix.textinput import TextInput
 from kivy.clock import Clock
 from kivy.core.image import Image
 from kivy.animation import Animation
+from calculator import main
 
 
 engine =pyttsx3.init()
 voices =engine.getProperty('voices')
 engine.setProperty('voice',voices[-1].id)
 
-class game(Widget):
+class Assistant(Widget):
     def textt(self,call):
         self.leb.text=str(call)#
-        self.ids.mic1.source='mic2.png'
+       # self.ids.mic1.source='mic2.png'
 
     def off(self):
         self.ids.mic1.source='mic2.png'
@@ -53,19 +54,21 @@ class game(Widget):
         k = sr.Recognizer()
         with sr.Microphone() as source:
             print("Listening....")
-            k.pause_threshold == 1
+            k.pause_threshold ==0.7
             audio=k.listen(source)
         try:
             print("Recognizing......")
             self.speak("Recognizing......")
-            query=k.recognize_google(audio, language='mar-in')    
-            print("user said: ",{query},"\n")
+            query=k.recognize_google(audio, language='Eng-in')    
+            print(f"user said: ",{query},"\n")
         except Exception as e:
             print("Say that again please....")
             self.speak("Say that again please....")
             return "None"
+            
         self.ids.mic1.source='mic1.png'
-        return query
+        self.exe(query)
+
 
 
     def sendEmail(to,content):
@@ -76,12 +79,15 @@ class game(Widget):
         server.sendmail('amolbrand00@gmail.com',to,content)
         server.close()
 
+    def cal():
+        return main.calcApp.run()
             
     def exe(self,query):
+        query=query.lower()
         if 'wikipedia' in query:
                     try:
                         self.speak('searching Wikipedia....')
-                        query= query.replace("wikipedia","")
+                        query= query.replace("wikipedia",'')
                         results = wikipedia.summary(query,sentences=1)
                         self.speak("Acording To Wikipedia")
                         self.speak(results)
@@ -104,9 +110,14 @@ class game(Widget):
         elif 'quit' in query:
             self.speak('have a great day')
 
-            quit()
+        elif 'calculator' in query:
+               Assistant.cal()
+
+        elif 'exit' in query:
+             quit()
         else:
                 self.speak("please give appropriate query")
+
 
     def anim(self,widget,*args):
         animate=Animation(background_color=(0,0,0,0),d=1)
@@ -117,14 +128,14 @@ class game(Widget):
     def update(self,*args):
         self.ti.text= datetime.datetime.now().strftime("[b]%H:%M[/b]:%S")
     def __init__(self, **kwargs):
-        super(game,self).__init__(**kwargs)
+        super(Assistant,self).__init__(**kwargs)
         Clock.schedule_interval(self.update,1)
 
 
 
 class app(a):
     def build(self):
-        return game()
+        return Assistant()
 
 app().run()
 
