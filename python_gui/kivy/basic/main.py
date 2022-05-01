@@ -1,4 +1,5 @@
 import time
+from debugpy import listen
 import pyttsx3
 import speech_recognition as sr
 import datetime
@@ -15,12 +16,12 @@ from kivy.uix.textinput import TextInput
 from kivy.clock import Clock
 from kivy.core.image import Image
 from kivy.animation import Animation
-from calculator import main
+from calculator import cal
 
 
-engine =pyttsx3.init()
+engine =pyttsx3.init('sapi5')
 voices =engine.getProperty('voices')
-engine.setProperty('voice',voices[-1].id)
+engine.setProperty('voice',voices[1].id)
 
 class Assistant(Widget):
     def textt(self,call):
@@ -80,7 +81,7 @@ class Assistant(Widget):
         server.close()
 
     def cal():
-        return main.calcApp.run()
+        return cal.calcApp.run()
             
     def exe(self,query):
         query=query.lower()
@@ -93,10 +94,70 @@ class Assistant(Widget):
                         self.speak(results)
                     except Exception as e:
                         print(e)
-                        self.speak("sorry boss ,i am not able get any appropriate result from wikipedia")
+                        self.speak("There was problem, Check your internet connection  Or Check your query is correct?")
         elif 'time' in query:
                     strtime= datetime.datetime.now().strftime("%H:%M:%S")
                     self.speak(f"The time is {strtime}")
+
+
+        elif 'play game' in query:
+                
+                name = input("Type your name: ")
+                self.speak("Welcome", name, "to this adventure!")
+                print("Welcome", name, "to this adventure!")
+
+                self.speak("You are on a dirt road, it has come to an end and you can go left or right. Which way would you like to go? ").lower()
+                answer = input(
+                    "You are on a dirt road, it has come to an end and you can go left or right. Which way would you like to go? ").lower()
+
+                if answer == "left":
+                    self.speak("You come to a river, you can walk around it or swim accross? Type walk to walk around and swim to swim accross: ")
+                    answer = input(
+                        "You come to a river, you can walk around it or swim accross? Type walk to walk around and swim to swim accross: ")
+
+                    if answer == "swim":
+                        print("You swam acrross and were eaten by an alligator.")
+                    elif answer == "walk":
+                        print("You walked for many miles, ran out of water and you lost the game.")
+                    else:
+                        print('Not a valid option. You lose.')
+
+                elif answer == "right":
+                    answer = input(
+                        "You come to a bridge, it looks wobbly, do you want to cross it or head back (cross/back)? ")
+
+                    if answer == "back":
+                        print("You go back and lose.")
+                    elif answer == "cross":
+                        answer = input(
+                            "You cross the bridge and meet a stranger. Do you talk to them (yes/no)? ")
+
+                        if answer == "yes":
+                            print("You talk to the stanger and they give you gold. You WIN!")
+                        elif answer == "no":
+                            print("You ignore the stranger and they are offended and you lose.")
+                        else:
+                            print('Not a valid option. You lose.')
+                    else:
+                        print('Not a valid option. You lose.')
+
+                else:
+                    print('Not a valid option. You lose.')
+
+                print("Thank you for trying", name)            
+
+
+        elif 'i want to watch movies' in query:
+            self.speak("Here list of movies.")
+            print("1)Moonfall\n2)Gangubai\n3)Pawankhind")
+            self.speak(' which movie you want to watch in this.')
+            movie=listen().lower()
+            if 'moonfall' in movie:
+             webbrowser.open('https://drive.google.com/file/d/1SEaKYjiQXVLbgJhtOiBSoY6OICwFct5o/view?usp=sharing')   
+            elif 'gangubai' in movie:
+                webbrowser.open('https://drive.google.com/file/d/1G676i4Vft5iD-pclUdek6x46vIqhRaoV/view?usp=sharing')
+            elif 'pawankhind' in movie:
+                webbrowser.open('https://drive.google.com/file/d/1ubVMz_I-r9wdWx1Ejcr-_8IzL82w2Vrn/view?usp=sharing')
         elif 'youtube' in query:
                     self.speak('starting')
                     time.sleep(3)
@@ -107,8 +168,7 @@ class Assistant(Widget):
                 self.leb.text=h
         elif'who are you' in query:
                     self.speak('I am veronica, i am A.i system of created by self,with love of you, i m a ho,such a disspointment to this dammed world') 
-        elif 'quit' in query:
-            self.speak('have a great day')
+       
 
         elif 'calculator' in query:
                Assistant.cal()
