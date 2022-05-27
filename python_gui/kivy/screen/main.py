@@ -1,17 +1,17 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen 
+from kivy.uix.screenmanager import ScreenManager, Screen
 import time
 import pyttsx3
 import speech_recognition as sr
 import datetime
-# import pyaudio
+import pyaudio
 import wikipedia
 import webbrowser
 import os
 import smtplib
-# import googletrans
+import googletrans
 from kivy.app import App as a
 from kivy.uix.button import Button as b
 from kivy.uix.widget import Widget
@@ -96,6 +96,8 @@ class SecondWindow(Screen,Widget):
                     except Exception as e:
                         print(e)
                         self.speak("sorry boss ,i am not able get any appropriate result from wikipedia")
+        elif 'next' in query:
+            self.ids.f.trigger_action(0.2)
         elif 'time' in query:
                     strtime= datetime.datetime.now().strftime("%H:%M:%S")
                     self.speak(f"The time is {strtime}")
