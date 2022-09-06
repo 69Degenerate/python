@@ -6,12 +6,12 @@ import time
 import pyttsx3
 import speech_recognition as sr
 import datetime
-import pyaudio
+# import pyaudio
 import wikipedia
 import webbrowser
 import os
 import smtplib
-import googletrans
+# import googletrans
 from kivy.app import App as a
 from kivy.uix.button import Button as b
 from kivy.uix.widget import Widget
