@@ -27,6 +27,6 @@ def contact():
         db.session.commit()
     return render_template('contact.html')
 
-# app.config['ENV'] = 'development'
-# app.config['DEBUG'] = True
-# app.config['TESTING'] = True
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
