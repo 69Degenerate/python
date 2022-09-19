@@ -1,3 +1,4 @@
+# from os import uname
 from  flask import Flask,request
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -9,7 +10,7 @@ db = SQLAlchemy(app)
 
 
 class logs(db.Model):
-    sno = db.Column(db.String(80), primary_key=True)
+    uname = db.Column(db.String(80), primary_key=True)
     pas = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(80), nullable=False)
  
@@ -20,7 +21,17 @@ def login():
         u = request.form.get('username')
         p = request.form.get('password')
         print(u,' ',p)
-    return render_template("log.html")
+        # re=nlogs.objects.filter(uname=p,pas=p)
+        # re=logs.s.query(uname=p,pas=p).all()
+        re=db.session.query(logs.uname,logs.pas).where(logs.uname==u,logs.pas==p)
+        print(re)
+        if re:
+            print('log')
+            return render_template("log.html")
+        else:
+            print('no log')
+            return render_template("log.html")
+
 
 
 
