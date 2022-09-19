@@ -29,10 +29,14 @@ def login():
             return render_template("log.html")
         else:
             print('log')
-            return render_template("log.html")
+            return render_template("create.html")
+    else:
+        return render_template("log.html")
 
-
-
+    
+@app.route("/create", methods = ['GET', 'POST'])
+def create():
+    return render_template("create.html")
 
 
 
