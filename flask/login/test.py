@@ -1,4 +1,5 @@
 # from os import uname
+from queue import Empty
 from  flask import Flask,request
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -21,15 +22,13 @@ def login():
         u = request.form.get('username')
         p = request.form.get('password')
         print(u,' ',p)
-        # re=nlogs.objects.filter(uname=p,pas=p)
-        # re=logs.s.query(uname=p,pas=p).all()
-        re=db.session.query(logs.uname,logs.pas).where(logs.uname==u,logs.pas==p)
-        print(re)
-        if re:
-            print('log')
+        s=db.session.execute(db.session.query(logs.uname,logs.pas).where(logs.uname==u,logs.pas==p)).one_or_none()
+        print(s)
+        if s is None:
+            print('no log')
             return render_template("log.html")
         else:
-            print('no log')
+            print('log')
             return render_template("log.html")
 
 
