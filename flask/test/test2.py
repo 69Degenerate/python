@@ -1,5 +1,7 @@
+import imp
 from  flask import Flask
 from flask import render_template
+from flask_sqlalchemy import SQLAlchemy
 import requests
 import json
 app=Flask(__name__)
@@ -24,3 +26,8 @@ def about():
 def ser():
     return render_template("services.html")
 app.run(host="0.0.0.0",port=80)
+
+
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
