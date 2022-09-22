@@ -4,12 +4,13 @@
 from http.client import responses
 from flask import Flask,request,flash
 from flask import Response
-from flask import render_template
+from flask import render_template,redirect
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:@localhost:5432/postgres'
+app.config['SECRET_KEY'] = 'the random string'   
 db = SQLAlchemy(app)
 
 
@@ -32,11 +33,11 @@ def login():
             return render_template("log.html")
         else:
             print('log')
-            return render_template("create.html")
+            # return render_template("create.html")
+            return redirect("/home")
     else:
         return render_template("log.html")
 
-    
 @app.route("/create", methods = ['GET', 'POST'])
 def create():
     if(request.method=='POST'):
@@ -48,20 +49,23 @@ def create():
         print(s)
         if s is None:
             print('log')
+            flash("user created")
             # entry = logs(name=u,email = e,pas=p)
             # db.session.add(entry)
             # db.session.commit()
-            return render_template("create.html")
+            # return render_template("create.html")
+            return redirect("/")
         else:
             print('no log')
-            # flash("sad")
-            mas=responses
+            flash("username already exist")
             return render_template("create.html")
     else:
         return render_template("create.html")
 
+@app.route("/home")
+def home():
+    return render_template("home.html")
 
 if __name__=="__main__":
     app.run(debug=True)
 
-# app.config['SECRET_KEY'] = 'the random string'   
