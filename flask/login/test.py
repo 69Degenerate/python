@@ -48,12 +48,11 @@ def create():
         s=db.session.execute(db.session.query(logs.uname).where(logs.uname==u)).one_or_none()
         print(s)
         if s is None:
-            print('log')
+            print('no user found')
             flash("user created")
-            # entry = logs(name=u,email = e,pas=p)
-            # db.session.add(entry)
-            # db.session.commit()
-            # return render_template("create.html")
+            entry = logs(uname=u,email = e,pas=p)
+            db.session.add(entry)
+            db.session.commit()
             return redirect("/")
         else:
             print('no log')
