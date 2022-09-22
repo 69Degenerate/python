@@ -1,0 +1,14 @@
+    pg_ctl -D /var/lib/postgres/data/ -l logfile start
+
+sudo su - postgres
+psql
+or db pass'a'
+
+
+for debuging flask:export FLASK_ENV=development 
+		export FLASK_DEBUG=1
+			
+		write in code: 
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True

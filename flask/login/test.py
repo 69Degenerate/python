@@ -1,6 +1,7 @@
 # from os import uname
 # from curses import flash
 # from queue import Empty
+from http.client import responses
 from flask import Flask,request,flash
 from flask import Response
 from flask import render_template
@@ -54,11 +55,13 @@ def create():
         else:
             print('no log')
             # flash("sad")
-            mas=89
+            mas=responses
             return render_template("create.html")
     else:
         return render_template("create.html")
 
-app.run(debug=True)
+
+if __name__=="__main__":
+    app.run(debug=True)
 
 # app.config['SECRET_KEY'] = 'the random string'   
