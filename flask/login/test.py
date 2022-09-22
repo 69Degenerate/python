@@ -2,6 +2,7 @@
 # from curses import flash
 # from queue import Empty
 from flask import Flask,request,flash
+from flask import Response
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
 
@@ -52,14 +53,12 @@ def create():
             return render_template("create.html")
         else:
             print('no log')
-            flash("sad")
+            # flash("sad")
+            mas=89
             return render_template("create.html")
     else:
         return render_template("create.html")
 
+app.run(debug=True)
 
-
-app.config['ENV'] = 'development'
-app.config['DEBUG'] = True
-app.config['TESTING'] = True
-app.config['SECRET_KEY'] = 'the random string'   
+# app.config['SECRET_KEY'] = 'the random string'   

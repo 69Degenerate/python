@@ -51,6 +51,7 @@ def ser():
 app.run(host="0.0.0.0",port=80)
 
 
-app.config['ENV'] = 'development'
-app.config['DEBUG'] = True
-app.config['TESTING'] = True
+# app.config['ENV'] = 'development'
+# app.config['DEBUG'] = True
+# app.config['TESTING'] = True
+app.run(debug=True)

@@ -23,4 +23,6 @@ def about():
 @app.route('/services')
 def ser():
     return render_template("services.html")
-app.run(host="0.0.0.0",port=80)
+
+
+app.run(debug=True)
