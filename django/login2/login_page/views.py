@@ -35,7 +35,7 @@ def create(request):
             # entry = logs(uname=u,email = e,pas=p)
             # db.session.add(entry)
             # db.session.commit()
-            
+            messages.success(request,'username already exist!')
             return render(request,'create.html')
             # return redirect("")
         else:
@@ -44,7 +44,6 @@ def create(request):
             return render(request,'create.html')
     else:
         # return render("create.html")
-        messages.success(request, 'username already exist!')
         return render(request,'create.html')
 
 
