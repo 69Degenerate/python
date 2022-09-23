@@ -1,0 +1,21 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "demo",
+            "database": "postgres",
+            "username": "postgres"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "lite",
+            "database": "${workspaceFolder:python}/django/form/db.sqlite3"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
