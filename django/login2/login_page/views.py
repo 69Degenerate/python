@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from login_page.models import logs
+from django.contrib import messages
 
 # Create your views here.
 def login(request):
@@ -21,19 +22,20 @@ def login(request):
 
 def create(request):
     if(request.method=='POST'):
+        u = request.POST.get('username')
         p = request.POST.get('password')
         e = request.POST.get('email')
-        u = request.POST.get('username')
         print(u,e,p)
         # s=logs.objects.filter(uname=p,pas=p,email=e)
-        s=logs.objects.filter(uname=p).first()
+        s=logs.objects.filter(uname=u).first()
         print(s)
         if s:
-            print('user found')
+            print('usernmae found')
             # flash("user created")
             # entry = logs(uname=u,email = e,pas=p)
             # db.session.add(entry)
             # db.session.commit()
+            
             return render(request,'create.html')
             # return redirect("")
         else:
@@ -42,6 +44,7 @@ def create(request):
             return render(request,'create.html')
     else:
         # return render("create.html")
+        messages.success(request, 'username already exist!')
         return render(request,'create.html')
 
 
