@@ -15,6 +15,7 @@ def login(request):
                 # return render(request,"home.html")
             else:
                 # return redirect("home")
+                messages.warning(request,'username doesnt exist!')
                 return render(request,"log.html")
     else:
         return render(request,"log.html")
@@ -31,19 +32,17 @@ def create(request):
         print(s)
         if s:
             print('usernmae found')
-            # flash("user created")
-            # entry = logs(uname=u,email = e,pas=p)
-            # db.session.add(entry)
-            # db.session.commit()
-            messages.success(request,'username already exist!')
+            messages.warning(request,'user already exist!')
             return render(request,'create.html')
             # return redirect("")
         else:
             print('no user found')
-            # flash("username already exist")
-            return render(request,'create.html')
+            entry = logs(uname=u,pas=p,email = e)
+            entry.save()
+            messages.success(request,'user created')
+            return redirect("/")
+            # return render(request,'create.html')
     else:
-        # return render("create.html")
         return render(request,'create.html')
 
 
