@@ -21,6 +21,12 @@
             "driver": "SQLite",
             "name": "log_page",
             "database": "${workspaceFolder:python}/django/login2/db.sqlite3"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "complete",
+            "database": "${workspaceFolder:python}/django/website/db.sqlite3"
         }
     ],
     "sqltools.useNodeRuntime": true

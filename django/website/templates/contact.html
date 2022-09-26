@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title %}Contact{% endblock title %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+  <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+ {% endfor %}
+{% endif %}
 
 {% block body %}
 <div class="container-fluid px-0 mb-3" >
