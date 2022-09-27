@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% block body %}
-
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ message }}
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
 <div class="container-fluid px-0 mb-3" >
   <img src="https://source.unsplash.com/1500x600/?phone" class="d-block w-100 mx-0" alt="...">
 </div>
