@@ -42,16 +42,16 @@
       <div class="container center col-sm-3"> 
 
   <center>      
-    <form action="/update1" method="post">
+    <form action="/update1/{{book.id}}" method="post">
       {% csrf_token %}
       <h1>Update Book</h1>   
       
         <label for="book_name">Book Name</label><br>
-        <input type="text" class="form-control" id="book_name" name="book_name"><br>
+        <input type="text" class="form-control" id="book_name" value="{{up.book_title}}" name="book_name"><br>
         <label for="auther_name">Auther Name</label><br>
-        <input type="text" class="form-control" id="Auther_name" name="author_name"><br>
+        <input type="text" class="form-control" id="Auther_name" value="{{up.book_author}}" name="author_name"><br>
         <label for="salary">Book Pages</label><br>
-        <input type="number" class="form-control" id="pages" name="pages"><br><br>
+        <input type="number" class="form-control" id="pages" value="{{up.book_pages}}" name="pages"><br><br>
         <button type="submit" class="btn btn-warning">Submit</button>
     
     </form>

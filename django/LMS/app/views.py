@@ -72,16 +72,23 @@ def update(request):
     context={'books':books}
     return render(request,'update.html',context)
 
-def update1(request):
+def update1(request,id=0):
+    up=library.objects.filter(id=id).first()
+    new={
+        'up':up
+    }
+    if id:
+        book=library.objects.get(id=id)
+        book.delete()
     if request.method == 'POST':
             name = request.POST['book_name']
             auth = request.POST['author_name']
             page = request.POST['pages']
-            
             new_book=library(book_title=name,book_author=auth,book_pages=page)
             new_book.save()
             return redirect('update')
-    return render(request,'update1.html')
+    # print(new)
+    return render(request,'update1.html',new)
 
 
 def d(request,id=0):
