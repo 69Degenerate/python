@@ -1,0 +1,71 @@
+WindowManager:
+	FirstWindow:
+	SecondWindow:
+
+
+<FirstWindow>:
+	name: "first"
+	id:sec
+	FloatLayout:
+        pos:0,0
+        size:root.width,root.height
+		Image:
+            source:'chess.jpg'
+            allow_stretch:True
+            keep_ratio:False
+        Button:#help button
+			id:but1
+            markup: True
+            text: "[b]START[/b]"
+            font_size:30
+            pos_hint:{'x':.02,'y':.85}
+            size_hint:None,None
+            size:root.width*.1,root.height*.05
+			background_color:(0,0,0,0)
+            on_press:				
+				sec.on()
+			on_release:
+				sec.off()
+				app.root.current = "second"
+				root.manager.transition.direction = "left"
+
+        Button:#help button
+            markup: True
+            text: "[b]START[/b]"
+            font_size:30
+            pos_hint:{'x':.02,'y':.75}
+            size_hint:None,None
+            size:root.width*.1,root.height*.05
+			background_color:(0,0,0,0)
+            on_press:				
+				sec.on()
+			on_release:
+				sec.off()				
+				app.root.current = "second"
+				root.manager.transition.direction = "left"
+        Button:#help button
+            markup: True
+            text: "[b]START[/b]"
+            font_size:30
+            pos_hint:{'x':.02,'y':.65}
+            size_hint:None,None
+            size:root.width*.1,root.height*.05
+			background_color:(0,0,0,0)
+            on_press:				
+				sec.on()
+			on_release:
+				sec.off()				
+				app.root.current = "second"
+				root.manager.transition.direction = "left"
+
+<SecondWindow>:
+	name: "second"
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+		Button:
+			text: "click to continue"
+			font_size: 32
+			on_release: 
+				app.root.current = "first"
+				root.manager.transition.direction = "right"
