@@ -20,7 +20,7 @@ def signin(request):
             name = request.POST.get('username')
             p = request.POST.get('password')
             print(name,' ',p)
-            re=logs.objects.filter(uname=p,pas=p)|logs.objects.filter(email=name,pas=p)
+            re=logs.objects.filter(uname=name,pas=p)|logs.objects.filter(email=name,pas=p)
             if re:
                 return redirect("view")
             else:
