@@ -19,7 +19,6 @@ def read2(request,pk):
 
 @api_view(['POST'])
 def create(request):
-    # books=library.objects.all()
     serialize=lib(data=request.data)
     if serialize.is_valid():
         serialize.save()
