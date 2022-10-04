@@ -4,6 +4,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('users',views.users,name='users'),
+    path('newuser',views.newuser,name='newuser'),
     path('',views.read,name='read'),
     path('<str:pk>',views.read2,name='read2'),
     path('create',views.create,name='create'),

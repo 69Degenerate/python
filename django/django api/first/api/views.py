@@ -2,8 +2,25 @@
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import library
-from .serializers import lib
+from .models import library,logs
+from .serializers import lib,log
+
+
+@api_view(['GET'])
+def users(request):
+    books=logs.objects.all()
+    serialize=log(books,many=True)
+    return Response(serialize.data)
+
+
+@api_view(['POST'])
+def newuser(request):
+    serialize=log(data=request.data)
+    if serialize.is_valid():
+        serialize.save()
+    return Response(serialize.data)
+
+
 @api_view(['GET'])
 def read(request):
     books=library.objects.all()
