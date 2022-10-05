@@ -43,35 +43,46 @@ def create(request):
     return Response(serialize.data)
 
 
-@api_view(['POST'])
-def update(request,pk):
-    books=library.objects.get(id=pk)
-    serialize=lib(instance=books,data=request.data)
-    if serialize.is_valid():
-        serialize.save()
-    return Response(serialize.data)
-
-
-
 # @api_view(['POST'])
+def update(request,pk=0):
+    up=library.objects.filter(id=pk).first()
+    new={
+        'up':up
+    }
+    if pk:
+                books=library.objects.get(id=pk)
+                books.delete()
+    if request.method == 'POST':
+            name = request.POST['book_name']
+            auth = request.POST['author_name']
+            page = request.POST['pages']   
+            data={
+                "book_title": name,
+                "book_author": auth,
+                "book_pages": page
+                }
+            serialize=lib(data=data)
+
+            if serialize.is_valid():
+                serialize.save()
+                return redirect(v.view)
+    return render(request,'update1.html',new)
+
+
 def add(request):
     if request.method == 'POST':
         name = request.POST['book_name']
         auth = request.POST['author_name']
         page = request.POST['pages']   
-        # new_book=library(book_title=name,book_author=auth,book_pages=page)
-        # new_book.save()
         data={
              "book_title": name,
              "book_author": auth,
              "book_pages": page
             }
-        # messages.success(request,'Book added Successfully')
         serialize=lib(data=data)
         if serialize.is_valid():
             serialize.save()
             return redirect(v.view)
-    # return Response(serialize.data)
     return render(request,'add2.html')
  
 
@@ -81,3 +92,6 @@ def delete(request,pk):
     books=library.objects.all()
     context={'books':books}
     return redirect(v.view)
+
+
+
