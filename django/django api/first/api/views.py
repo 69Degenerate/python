@@ -23,12 +23,6 @@ def newuser(request):
 
 
 @api_view(['GET'])
-def read(request):
-    books=library.objects.all()
-    serialize=lib(books,many=True)
-    return Response(serialize.data)
-
-@api_view(['GET'])
 def read2(request,pk):
     books=library.objects.get(id=pk)
     serialize=lib(books,many=False)
@@ -42,16 +36,24 @@ def create(request):
         serialize.save()
     return Response(serialize.data)
 
-
+# perform CRUD operations on library database
 # @api_view(['POST'])
+
+@api_view(['GET'])
+def read(request):
+    books=library.objects.all()
+    serialize=lib(books,many=True)
+    return Response(serialize.data)
+
+# update books details by first collecting availabe info from record,then deleting it and reinserting it with updated info
 def update(request,pk=0):
     up=library.objects.filter(id=pk).first()
     new={
         'up':up
     }
     if pk:
-                books=library.objects.get(id=pk)
-                books.delete()
+            books=library.objects.get(id=pk)
+            books.delete()
     if request.method == 'POST':
             name = request.POST['book_name']
             auth = request.POST['author_name']
