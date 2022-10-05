@@ -92,13 +92,7 @@ def update1(request,id=0):
     return render(request,'update1.html',new)
 
 
-def d(request,id=0):
-    if id: 
-        book=library.objects.get(id=id)
-        book.delete()
-        return redirect('update1')
-    return render(request,'delete.html')
-# def delete(request):
+
 def delete(request,id=0):
     books=library.objects.all()
     context={'books':books}
@@ -106,4 +100,14 @@ def delete(request,id=0):
         book=library.objects.get(id=id)
         book.delete()
     return render(request,'delete.html',context)
+
+
+# def del(request,id=0):
+#     books=library.objects.all()
+#     context={'books':books}
+#     if id: 
+#         book=library.objects.get(id=id)
+#         book.delete()
+#     return render(request,'delete.html',context)
+
 

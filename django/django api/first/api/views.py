@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from .models import library,logs
 from .serializers import lib,log
 
-
+from django.shortcuts import render,redirect
 @api_view(['GET'])
 def users(request):
     books=logs.objects.all()
@@ -51,8 +51,10 @@ def update(request,pk):
     return Response(serialize.data)
 
 
-@api_view(['DELETE'])
+# @api_view(['DELETE'])
 def delete(request,pk):
     books=library.objects.get(id=pk)
     books.delete()
-    return Response("book is deleted")
+    books=library.objects.all()
+    context={'books':books}
+    return render(request,'view.html',context)

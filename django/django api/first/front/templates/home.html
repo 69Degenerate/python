@@ -25,7 +25,7 @@
             <th scope="col">Book Name</th>
             <th scope="col">Author</th>
             <th scope="col">Pages</th>
-          </tr>
+            </tr>
         </thead>
             {% for  book in books  %}
         <tbody>
@@ -33,6 +33,7 @@
                 <td>{{book.book_title}}</td>
                 <td>{{book.book_author}}</td>
                 <td>{{book.book_pages}}</td>
+                      
               </tr>
         </tbody>
             {% endfor  %}
