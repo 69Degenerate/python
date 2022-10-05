@@ -102,12 +102,6 @@ def delete(request,id=0):
     return render(request,'delete.html',context)
 
 
-# def del(request,id=0):
-#     books=library.objects.all()
-#     context={'books':books}
-#     if id: 
-#         book=library.objects.get(id=id)
-#         book.delete()
-#     return render(request,'delete.html',context)
+
 
 

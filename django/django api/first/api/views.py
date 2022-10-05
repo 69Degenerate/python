@@ -6,6 +6,7 @@ from .models import library,logs
 from .serializers import lib,log
 from front import views as v
 from django.shortcuts import render,redirect
+from django.contrib import messages
 @api_view(['GET'])
 def users(request):
     books=logs.objects.all()
@@ -51,7 +52,29 @@ def update(request,pk):
     return Response(serialize.data)
 
 
-# @api_view(['DELETE'])
+
+# @api_view(['POST'])
+def add(request):
+    if request.method == 'POST':
+        name = request.POST['book_name']
+        auth = request.POST['author_name']
+        page = request.POST['pages']   
+        # new_book=library(book_title=name,book_author=auth,book_pages=page)
+        # new_book.save()
+        data={
+             "book_title": name,
+             "book_author": auth,
+             "book_pages": page
+            }
+        # messages.success(request,'Book added Successfully')
+        serialize=lib(data=data)
+        if serialize.is_valid():
+            serialize.save()
+            return redirect(v.view)
+    # return Response(serialize.data)
+    return render(request,'add2.html')
+ 
+
 def delete(request,pk):
     books=library.objects.get(id=pk)
     books.delete()
