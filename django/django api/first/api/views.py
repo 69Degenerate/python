@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import library,logs
 from .serializers import lib,log
-
+from front import views as v
 from django.shortcuts import render,redirect
 @api_view(['GET'])
 def users(request):
@@ -57,4 +57,4 @@ def delete(request,pk):
     books.delete()
     books=library.objects.all()
     context={'books':books}
-    return render(request,'view.html',context)
+    return redirect(v.view)
