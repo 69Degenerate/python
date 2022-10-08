@@ -1,6 +1,6 @@
 
 from django.shortcuts import render,redirect
-
+from admin_view import views
 from .models import log as logs
 from admin_view.models import library
 from django.contrib import messages
@@ -22,9 +22,9 @@ def signin(request):
             print(name,' ',p)
             re=logs.objects.filter(uname=name,pas=p)|logs.objects.filter(email=name,pas=p)
             if re:
-                # return redirect("http://127.0.0.1:8000/api/readall")
-                print('loggedin')
-                return render(request,"signin.html")
+                # print('loggedin')
+                # return render(request,"signin.html")
+                return redirect(views.readall)
             else:
                 print(re)
                 messages.warning(request,'user doesnt exist!')
