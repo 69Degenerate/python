@@ -95,7 +95,6 @@ def delete(request,pk):
     books=library.objects.get(id=pk)
     books.delete()
     books=library.objects.all()
-    context={'books':books}
     return redirect('readall')
 
 
