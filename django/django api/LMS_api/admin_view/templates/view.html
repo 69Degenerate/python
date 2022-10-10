@@ -25,6 +25,7 @@
             <th scope="col">Book Name</th>
             <th scope="col">Author</th>
             <th scope="col">Pages</th>
+            <th scope="col">Availability</th>
             <th>Update</th>
             <th>Delete</th>
           
@@ -37,6 +38,7 @@
                 <td>{{book.book_title}}</td>
                 <td>{{book.book_author}}</td>
                 <td>{{book.book_pages}}</td>
+                <td>{{book.book_avail}}</td>
                 <td><a href="http://127.0.0.1:8000/admin_view/update/{{book.id}}" class="btn btn-outline-primary" role="button">edit</a></td>
                 <td><a href="http://127.0.0.1:8000/admin_view/delete/{{book.id}}" class="btn btn-outline-danger" role="button">Delete</a></td>
                    
