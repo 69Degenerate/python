@@ -8,6 +8,6 @@ class library(models.Model):
     book_title = models.CharField(max_length=200)
     book_author = models.CharField(max_length=100)
     book_pages = models.CharField(max_length=50)
-    book_avail=models.CharField(max_length=20,choices=avail,default='unavailable')
+    book_avail=models.CharField(max_length=20,choices=avail,default='out of stock')
     def __str__(self):
         return self.book_title
