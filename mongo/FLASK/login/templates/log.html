@@ -81,21 +81,21 @@
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 </head>
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-  {% for message in messages %}
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ message }}
-   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-     <span aria-hidden="true">&times;</span>
-   </button>
- </div>
-  {% endfor %}
-{% endif %}
-{% endwith %}
-{% block body %}{% endblock body %}
+{% block body %}
 <body class="text-center">
     <form class="form-signin" method="post" action="/">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Username</label>
         <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required
@@ -114,7 +114,7 @@
     <div> 
     </div>
 </body>
-
+{% endblock body %}
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
