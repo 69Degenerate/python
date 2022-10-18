@@ -2,8 +2,8 @@ from ast import Break
 import pymongo
 print('-------------emp data insertion script---------------------')
 if __name__ == "__main__":
-    c=pymongo.MongoClient('mongodb://127.0.0.1:27017')
-    print('connected',c)
+    c = pymongo.MongoClient("mongodb+srv://vishal:root@cluster0.4g6eqfu.mongodb.net/?retryWrites=true&w=majority")
+    # db = client.test
     db=c['python']
     coll=db['emp']
     init=0
