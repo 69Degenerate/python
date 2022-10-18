@@ -60,18 +60,20 @@ def update(request,pk=0):
     if request.method == 'POST':
             name = request.POST['book_name']
             auth = request.POST['author_name']
-            page = request.POST['pages']   
+            page = request.POST['pages']
+            avail = request.POST['avail']
             data={
                 "book_title": name,
                 "book_author": auth,
-                "book_pages": page
+                "book_pages": page,
+                "book_avail": avail
                 }
             serialize=lib(data=data)
 
             if serialize.is_valid():
                 serialize.save()
                 return redirect('readall')
-    return render(request,'update1.html',new)
+    return render(request,'update.html',new)
 
 # add books to record by using api
 def add(request):
@@ -79,16 +81,18 @@ def add(request):
         name = request.POST['book_name']
         auth = request.POST['author_name']
         page = request.POST['pages']   
+        avail = request.POST['avail']
         data={
              "book_title": name,
              "book_author": auth,
-             "book_pages": page
+             "book_pages": page,
+             "book_avail": avail
             }
         serialize=lib(data=data)
         if serialize.is_valid():
             serialize.save()
             return redirect('readall')
-    return render(request,'add2.html')
+    return render(request,'add.html')
  
 # delete the records using api
 def delete(request,pk):

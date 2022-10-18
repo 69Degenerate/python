@@ -9,22 +9,28 @@
 </head>
 <body>
 
-
-
       {% block body %}
       <div class="container center col-sm-3"> 
 
   <center>      
-    <form action="http://127.0.0.1:8000/admin_view/add" method="post">
+    <form action="http://127.0.0.1:8000/admin_view/update/{{book.id}}" method="post">
       {% csrf_token %}
-      <h1>Add New Book</h1>   
+      <h1>Update Book</h1>   
+      
         <label for="book_name">Book Name</label><br>
-        <input type="text" class="form-control" id="book_name" name="book_name" value={{book.book_title}}><br>
+        <input type="text" class="form-control" id="book_name" value="{{up.book_title}}" name="book_name"><br>
         <label for="auther_name">Auther Name</label><br>
-        <input type="text" class="form-control" id="Auther_name" name="author_name" value={{book.book_author}}><br>
+        <input type="text" class="form-control" id="Auther_name" value="{{up.book_author}}" name="author_name"><br>
         <label for="salary">Book Pages</label><br>
-        <input type="number" class="form-control" id="pages" name="pages" value={{book.book_pages}}><br><br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <input type="number" class="form-control" id="pages" value="{{up.book_pages}}" name="pages"><br>
+        <select name="avail" id="avail" value="{{up.book_avail}}">
+          <option value="in stock">available</option>
+          <option value="out of stock">unavailable</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-warning">Submit</button>
+    
     </form>
   </center>
       </div>
