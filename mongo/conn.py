@@ -4,8 +4,9 @@ print('-------------emp data insertion script---------------------')
 if __name__ == "__main__":
     c = pymongo.MongoClient("mongodb+srv://vishal:root@cluster0.4g6eqfu.mongodb.net/?retryWrites=true&w=majority")
     # db = client.test
-    db=c['python']
-    coll=db['emp']
+    # db=c['python']
+    # coll=db['emp']
+    coll=c.python.emp
     init=0
     while init==0:
         empno=int(input('enter empno:'))
