@@ -1,6 +1,14 @@
-
 # ----------------------------------------------------------------------------------------------------
-# # inheritance
+# # # inheritance
+# # basicaly sharing things of parent class with child classes,these things can consist variables,methods and classes of parent class
+# # following are the types of inheritance
+# # Single inheritance.
+# # Multi-level inheritance.
+# # Multiple inheritance.
+# # Multipath inheritance.
+# # Hierarchical Inheritance.
+# # Hybrid Inheritance(combination of all or some of above).
+
 # class mul:
 #     def m():
 #         print('2*8')
@@ -33,7 +41,9 @@
 
 
 # ----------------------------------------------------------------------------------------------------
-# #  abstraction with python
+# # #  abstraction with python
+# # its a process of minimizing code by hiding lenthie or unneccesory code 
+# # in this code we writted code in file class
 # from classpro import demo
 # d= demo()
 # print(d.d,' ',d.s,' ',d.de())
@@ -101,6 +111,9 @@
 
 
 # ---------------------------------------------------------------------------------------------------
-# encsulation with python
-
+# # # encsulation with python
+# # encapsulation means wrappind data in a sigle unit
+# # its not something that we need to do specificaly, its comes with using classes.like a class consist of methods and variables
+# # we dont really need to write any code for this cause its a concept of OOPS
+# # in a compiler based languages encapsulate code in byte code we can be executed but cant be readed, and data hiding is one of its advantage
 # ---------------------------------------------------------------------------------------------------
