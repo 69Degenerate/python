@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row">
+    {% for i in info %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src={{i.image}} class="card-img-top" >
+            <div class="card-body">
+                <p class="card-text">{{i.name}} {{i.release_year}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}
