@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="row">
-    {% for i in info %}
-    <div class="col">
-        <div class="card" style="width: 18rem;">
-            <img src={{i.image}} class="card-img-top" >
-            <div class="card-body">
-                <p class="card-text">{{i.name}} {{i.release_year}}</p>
+    <div class="bg-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');height: 100vh">
+            <div class="container my-3" >
+                <div class="row">
+                    {% for i in info %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="{{i.image}}" class="d-block w-100" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">{{i.name}}<br><small>{{i.release_year}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}        
+                </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
-</div>
 {% endblock body %}
