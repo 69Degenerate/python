@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container text-white">
+    <center>
+        <br>
+        <h3><b>{{rec.name}} </b></h3>
+        <img src="{{rec.image}}" alt="" class="d-block w-50" >
+        <p><b>name: </b>{{rec.name}}</p>
+        <p><b>release year:</b>{{rec.release_year}}</p>
+        <p><b>gerne: </b>{{rec.gerne}}</p>
+        <p><b>imdb: </b>{{rec.imdb}}</p>
+        <p><b>rotten tometos: </b>{{rec.rt}}</p>
+        
+        <div class="container" style=" width: 50%;">
+            <p><b>cast:</b><br>{{rec.cast}}</p>
+            <p><b>info:</b><br>{{rec.desc}}</p>
+            <br>   
+            <h3><b>Download</b></h3>
+            <a href="{{rec.link480p}}" class="btn btn-primary btn-lg btn-block active" width="150" role="button" aria-pressed="true">480p</a>
+            <br>
+            <a href="{{rec.link720p}}" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">720p</a>
+            <br>
+            <a href="{{rec.link1080p}}" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">1080p</a>
+            <br>
+        </div>
+        
+    </center>
+</div>
+{% endblock body %}

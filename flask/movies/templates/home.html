@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+            <div class="container " >
+                <div class="row">
+                    {% for i in info %}
+                    <div class="col-md-4">
+                        <a href="download/{{i.name}}">
+                            <div class="card bg-dark text-white mb-4 shadow-sm">
+                                <img src="{{i.image}}" class="d-block w-100" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">{{i.name}}<br><small>{{i.release_year}}</small></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}        
+                </div>
+            </div>
+{% endblock body %}
