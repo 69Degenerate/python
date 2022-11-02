@@ -4,7 +4,7 @@ import email
 from django.shortcuts import render,redirect
 from .models import logs,library
 from django.contrib import messages
-
+from django.db.models import Q
 
 
 def home(request):
@@ -20,7 +20,7 @@ def signin(request):
             name = request.POST.get('username')
             p = request.POST.get('password')
             print(name,' ',p)
-            re=logs.objects.filter(uname=name,pas=p)|logs.objects.filter(email=name,pas=p)
+            re=logs.objects.filter(Q(uname=name,pas=p)|Q(email=name,pas=p))
             if re:
                 return redirect("view")
             else:
