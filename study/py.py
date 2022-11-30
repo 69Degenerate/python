@@ -47,6 +47,15 @@
 # from classpro import demo
 # d= demo()
 # print(d.d,' ',d.s,' ',d.de())
+# # to use abstraction we import ABC and abstractmethod fropm abc
+# # following creates abstract class and method
+# from abc import ABC,abstractmethod
+# class abstra(ABC):
+#     @abstractmethod
+#     def abcmethod():
+#         pass
+# abstract class is a class that constains an abstract method
+# abstract class cannot be used to create an object,it's only accesssesible throgh inheritance
 # ----------------------------------------------------------------------------------------------------
 
 
@@ -92,6 +101,9 @@
 # print(w.sec())
 
 # # method overriding
+# # method overriding is a condition where child class can have method with same as one in the parent class 
+# # these methods may or may not be same in working
+# # following is a example of method overriding
 # class demo:
 #     def one(self):
 #         return 'first original method from parent class'
@@ -105,7 +117,14 @@
 # d2=demo2()
 # d3=demo3()
 # print('',d.one(),'\n',d2.one(),'\n',d3.one())
-# method overloading is not possible in python
+# # method overloading is not possible in python by default
+# # method overloading a condition where to methods can have same name but different type and/or number of parameters
+# def overloade(no,no1,no2):
+#     pass
+# def overloead(str1,str2):
+#     pass
+# # method overriding is only possible in compiler bases languages
+# # since python is a interpeter based language ,the second method will overwrite the first method
 # ---------------------------------------------------------------------------------------------------
 
 
