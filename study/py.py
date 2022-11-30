@@ -132,7 +132,70 @@
 # ---------------------------------------------------------------------------------------------------
 # # # encsulation with python
 # # encapsulation means wrappind data in a sigle unit
-# # its not something that we need to do specificaly, its comes with using classes.like a class consist of methods and variables
-# # we dont really need to write any code for this cause its a concept of OOPS
+# # In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class.
 # # in a compiler based languages encapsulate code in byte code we can be executed but cant be readed, and data hiding is one of its advantage
+# class Students:
+#    def __init__(self, name, rank):
+#       self.name = name
+#       self.rank = rank
+#    def demofunc(self):
+#       print("I am "+self.name)
+#       print("I got Rank ",+self.rank)
+# st1 = Students("Steve", 1, 100)
+# st2 = Students("Chris", 2, 90)
+# st1.demofunc()
+# st2.demofunc()
+
+
+# # we use accese modifiers to decide the scope of component
+# # following are the types of access modifier in python 
+# # 1.public:these are accesseble outside the class  eg.defname,varname
+# # program to illustrate public access modifier in a class
+# class base:
+# 	def __init__(self, name, age):		
+# 		self.Name = name
+# 		self.Age = age
+# 	def displayAge(self):		
+# 		print("Age: ", self.Age)
+# obj = base("R2J", 20)
+# print("Name: ", obj.Name)
+# obj.displayAge()
+
+# # 2.private:member is accessible only inside class. Define a private member by prefixing the member name with two underscores. eg.__defname,__varname
+# class base:
+#     __name=None
+#     __age=None
+#     def __init__(self,n,a):
+#        self.__name=n
+#        self.__age=a
+#     def __prvdef(self):
+#         print("name",self.__name)
+#         print("age",self.__age)
+#     def displayprv(self):
+#         self.__prvdef()
+# o=base("r2d2",12)
+# o.displayprv()
+
+# # 3.protected:member is accessible from inside the class and its sub-class. Define a by prefixing the member name with one underscores. eg._defname,_varname
+# # program to illustrate protected access modifier in a class
+# class Student:
+# 	_name = None
+# 	_roll = None
+# 	_branch = None
+# 	def __init__(self, name, roll, branch):
+# 		self._name = name
+# 		self._roll = roll
+# 		self._branch = branch
+# 	def _displayRollAndBranch(self):
+# 		print("Roll: ", self._roll)
+# 		print("Branch: ", self._branch)
+# class Geek(Student):
+# 	def __init__(self, name, roll, branch):
+# 				Student.__init__(self, name, roll, branch)
+# 	def displayDetails(self):
+# 				print("Name: ", self._name)
+# 				self._displayRollAndBranch()
+# obj = Geek("R2J", 1706256, "Information Technology")
+# obj.displayDetails()
+
 # ---------------------------------------------------------------------------------------------------
