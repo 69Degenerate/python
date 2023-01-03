@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import pymongo
+from bson.json_util import dumps,loads
 app = FastAPI()
 cli=pymongo.MongoClient("mongodb://localhost:27017")
 db=cli.workdb.emp
@@ -12,17 +13,16 @@ def root():
 def root():
     s=db.find({"deptno": 30},{'_id':False})
     print(s)
-    di=[]
-    for i in s:
-        di.append(i)
-    # print(di)
-    # return di
+    # di=[]
+    # for i in s:
+    #     di.append(i)
+    di = loads(dumps(list(s)))
     return di
 
 
-@app.get("/readone/{m}")
-async def readone(m):
-    n=int(m)
+@app.get("/readone/{deptno}")
+async def readone(deptno):
+    n=int(deptno)
     s=db.find({"deptno": n},{'_id':False})
     print(s)
     di=[]
@@ -30,17 +30,16 @@ async def readone(m):
         di.append(i)
     print(type(n),n)
     print(di)
-    # return di
-    return di
+    return loads(dumps(list(db.find({"deptno": n},{'_id':False}))))
 
 
-@app.get('/readname/{name}')
-def readname(name):
-    s=db.find({"ename":{'$regex': name,'$options': 'i'}},{'_id':False})
-    d=[]
-    for i in s:
-        d.append(i)
-    return d
+@app.get('/readname/{ename}')
+def readname(ename):
+    # s=db.find({"ename":{'$regex': name,'$options': 'i'}},{'_id':False})
+    # d=[]
+    # for i in s:
+    #     d.append(i)
+    return loads(dumps(list(db.find({"ename":{'$regex': ename,'$options': 'i'}},{'_id':False}))))
 
 
 @app.post("/items/")
