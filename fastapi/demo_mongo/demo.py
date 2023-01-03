@@ -74,7 +74,8 @@ def delete(name):
     di=[]
     for i in s:
         di.append(i)
-    return di
+    # return di
+    return loads(dumps(list(s)))
 
 
 @app.put('/update/')
@@ -85,7 +86,8 @@ def update(name,newname):
     print(x.modified_count, "documents updated.")
     s=db.find({"ename": newname},{'_id':False})
     print(s)
-    di=[]
-    for i in s:
-        di.append(i)
-    return di
+    # di=[]
+    # for i in s:
+    #     di.append(i)
+    # return di
+    return loads(dumps(list(s)))
