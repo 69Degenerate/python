@@ -4,7 +4,6 @@ sudo su - postgres
 psql
 or db pass'a'
 
-
 for debuging flask:export FLASK_ENV=development 
 		export FLASK_DEBUG=1
 			
