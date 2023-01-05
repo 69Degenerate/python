@@ -9,7 +9,7 @@ urlpatterns = [
     path('create',views.create,name='create'),
     path('add',views.add,name='add'),
     path('update/',views.update,name='update'),
-    path('update/<str:pk>',views.update,name='update'),
+    path('update/<int:pk>',views.update,name='update'),
     path('delete/<str:pk>',views.delete,name='delete'),
     
 ]

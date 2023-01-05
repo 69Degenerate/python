@@ -1,4 +1,3 @@
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import library
@@ -49,14 +48,17 @@ def readall(request):
     return render(request,'view.html',context)
 
 # update books details by first collecting availabe info from record,then deleting it and reinserting it with updated info
+
 def update(request,pk=0):
+    if(pk!=0):
+        newid=pk
     up=library.objects.filter(id=pk).first()
     new={
         'up':up
     }
-    if pk:
-            books=library.objects.get(id=pk)
-            books.delete()
+    # if pk:
+    #         books=library.objects.get(id=pk)
+    #         books.delete()
     if request.method == 'POST':
             name = request.POST['book_name']
             auth = request.POST['author_name']
@@ -68,11 +70,16 @@ def update(request,pk=0):
                 "book_pages": page,
                 "book_avail": avail
                 }
-            serialize=lib(data=data)
-
-            if serialize.is_valid():
-                serialize.save()
-                return redirect('readall')
+            library.objects.filter(id=pk).update(book_title=name,book_author=auth,book_pages=page,book_avail=avail)
+                # upp.book_title=name
+                # upp.book_author=auth
+                # upp.book_pages=page
+                # upp.book_avail=avail
+                # print(library.objects.filter(id=pk))
+                # for i in library.objects.filter(id=pk):
+                #     print(i)
+                
+            return redirect('readall')
     return render(request,'update.html',new)
 
 # add books to record by using api
