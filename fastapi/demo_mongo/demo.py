@@ -1,9 +1,16 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,Request
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 import pymongo
 from bson.json_util import dumps,loads
 app = FastAPI()
 cli=pymongo.MongoClient("mongodb://localhost:27017")
 db=cli.workdb.emp
+tem = Jinja2Templates(directory="./templates")
+
+@app.get("/", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return tem.TemplateResponse("home.html", {"request": request})
 
 @app.get("/read")
 def read():
