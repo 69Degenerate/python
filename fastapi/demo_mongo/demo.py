@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse
 import pymongo
 from bson.json_util import dumps,loads
 app = FastAPI()
-cli=pymongo.MongoClient("mongodb://localhost:27017")
+cli=pymongo.MongoClient("mongodb://mongo:hKkb23G8NtWIezPQe4Cg@containers-us-west-197.railway.app:7613")
 db=cli.workdb.emp
 tem = Jinja2Templates(directory="./templates")
 
@@ -16,9 +16,6 @@ async def read_item(request: Request):
 def read():
     s=db.find({"deptno": 30},{'_id':False})
     print(s)
-    # di=[]
-    # for i in s:
-    #     di.append(i)
     di = loads(dumps(list(s)))
     return di
 
@@ -26,22 +23,11 @@ def read():
 @app.get("/readone/{deptno}")
 async def readone(deptno):
     n=int(deptno)
-    # s=db.find({"deptno": n},{'_id':False})
-    # print(s)
-    # di=[]
-    # for i in s:
-    #     di.append(i)
-    # print(type(n),n)
-    # print(di)
     return loads(dumps(list(db.find({"deptno": n},{'_id':False}))))
 
 
 @app.get('/readname/{ename}')
 def readname(ename):
-    # s=db.find({"ename":{'$regex': name,'$options': 'i'}},{'_id':False})
-    # d=[]
-    # for i in s:
-    #     d.append(i)
     return loads(dumps(list(db.find({"ename":{'$regex': ename,'$options': 'i'}},{'_id':False}))))
 
 
@@ -57,27 +43,13 @@ def insert():
     "comm": 300,
     "deptno": 30
   }
-    db.insert_one({
-    "empno": 7499,
-    "ename": "allen",
-    "job": "salesman",
-    "mgr": 7698,
-    "hiredate": "20-02-81",
-    "sal": 1600,
-    "comm": 300,
-    "deptno": 30
-  })
+    db.insert_one(data)
     return dict(data)
 
 @app.delete('/delete/{name}')
 def delete(name):
     db.delete_many({"ename":name})
     s=db.find({"deptno": name},{'_id':False})
-    # print(s)
-    # di=[]
-    # for i in s:
-    #     di.append(i)
-    # return di
     return loads(dumps(list(s)))
 
 
@@ -89,8 +61,4 @@ def update(name,newname):
     print(x.modified_count, "documents updated.")
     s=db.find({"ename": newname},{'_id':False})
     print(s)
-    # di=[]
-    # for i in s:
-    #     di.append(i)
-    # return di
     return loads(dumps(list(s)))

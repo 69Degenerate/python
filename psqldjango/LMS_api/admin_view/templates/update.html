@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+      {% block body %}
+      <div class="container center col-sm-3"> 
+
+  <center>      
+    <form action="http://127.0.0.1:8000/admin_view/update/{{up.id}}" method="post">
+      {% csrf_token %}
+      <h1>Update Book</h1>   
+      
+        <label for="book_name">Book Name</label><br>
+        <input type="text" class="form-control" id="book_name" value="{{up.book_title}}" name="book_name"><br>
+        <label for="auther_name">Auther Name</label><br>
+        <input type="text" class="form-control" id="Auther_name" value="{{up.book_author}}" name="author_name"><br>
+        <label for="salary">Book Pages</label><br>
+        <input type="number" class="form-control" id="pages" value="{{up.book_pages}}" name="pages"><br>
+        <select name="avail" id="avail" value="{{up.book_avail}}">
+          <option value="in stock">available</option>
+          <option value="out of stock">unavailable</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-warning">Submit</button>
+    
+    </form>
+  </center>
+      </div>
+        {% endblock body %}
+    
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+</html>

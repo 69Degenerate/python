@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
+</head>
+<body>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        name:<input type="text" name="name" id=""></br></br>
+        roll:<input type="number" name="roll" id=""></br></br>
+        email:<input type="text" name="mail" id=""></br></br>
+        dept:<select name="dept" id="">
+            <option value="python">python</option>
+            <option value="java">java</option>
+            <option value="js">js</option>
+        </select></br></br>
+        <button type="submit">sub</button>
+    </form>
+</br></br>
+    <form action="" method="get">
+        <input type="text" name="s" placeholder="search">
+        <select name="c" id="">
+            <option value="n">name</option>
+            <option value="r">roll_no</option>
+            <option value="e">email</option>
+            <option value="d">dept</option>
+        </select>
+        <button type="submit">search</button>
+    </form>
+    <center>
+    </br></br>
+    <h4>student details</h4>
+        <table style="width:600px">
+            <tr>
+                <th>roll_no</th>
+                <th>name</th>
+                <th>email</th>
+                <th>dept</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td><center>{{i.r}}</center></td>
+                <td><center>{{i.n}}</center></td>
+                <td><center>{{i.e}}</center></td>
+                <td><center>{{i.d}}</center></td>
+            </tr>
+            {% endfor %}
+        </table>
+</center>
+</body>
+</html>
