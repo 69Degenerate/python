@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>
+</head>
+<body>
+    
+        name:<input type="text" name="name" id="name"></br></br>
+        roll:<input type="number" name="roll" id="num"></br></br>
+        email:<input type="text" name="mail" id="mail"></br></br>
+        dept:<select name="dept" id="dept">
+            <option value="python">python</option>
+            <option value="java">java</option>
+            <option value="js">js</option>
+        </select></br></br>
+        <button type="submit" onclick="send()" >sub</button>
+<br>
+<center>
+</br></br>
+        <input type="text" name="s" id="s2" placeholder="search">
+        <select name="c" id="s1">
+            <option value="n">name</option>
+            <option value="r">roll_no</option>
+            <option value="e">email</option>
+            <option value="d">dept</option>
+        </select>
+        <button type="submit" onclick="search()">search</button>
+    </br>
+</center>
+<center>
+
+    <h4>student details</h4>
+    <table style="width:600px" id="data">
+        <tr>
+            <th>roll_no</th>
+            <th>name</th>
+            <th>email</th>
+            <th>dept</th>
+        </tr>
+    </table>
+</center>
+<script>
+    read()
+    let dd;
+    async function read(){
+        let d= await fetch('http://127.0.0.1:8000/r');
+        let data = await d.json();
+        dd=data;
+        document.getElementById('data').innerHTML=`<tr>
+            <th>roll_no</th>
+            <th>name</th>
+            <th>email</th>
+            <th>dept</th>
+        </tr>`;
+        for(let i = 0 ;i<data.length;i++){
+        document.getElementById('data').innerHTML+=`
+        <tr>
+            <td><center>`+data[i].r+`</center></td>
+            <td><center>`+data[i].n+`</center></td>
+            <td><center>`+data[i].e+`</center></td>
+            <td><center>`+data[i].d+`</center></td>
+        </tr>
+        `;    
+        }
+    }
+    
+    async function search(){
+        let ch=document.getElementById('s1').value;
+        let ch2=document.getElementById('s2').value;
+        let d= await fetch('http://127.0.0.1:8000/s/'+ch+'/'+ch2);
+        let data = await d.json();
+        dd=data;
+        document.getElementById('data').innerHTML=`<tr>
+            <th>roll_no</th>
+            <th>name</th>
+            <th>email</th>
+            <th>dept</th>
+        </tr>`;
+        for(let i = 0 ;i<data.length;i++){
+        document.getElementById('data').innerHTML+=`
+        <tr>
+            <td><center>`+data[i].r+`</center></td>
+            <td><center>`+data[i].n+`</center></td>
+            <td><center>`+data[i].e+`</center></td>
+            <td><center>`+data[i].d+`</center></td>
+        </tr>
+        `;    
+        }
+    }
+
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+    
+
+    async function send(search){
+        var n=document.getElementById("name").value;
+        var r=document.getElementById("num").value;
+        var e=document.getElementById("mail").value;
+        var d=document.getElementById("dept").value;
+        let data={
+            "n": n,
+            "r": r,
+            "e": e,
+            "d": d
+        }
+        console.log(n);
+        console.log(r);
+        console.log(e);
+        console.log(d);
+        const url = "http://127.0.0.1:8000/w";
+        const other_params = {
+            headers : { "content-type" : "application/json; charset=UTF-8"},
+            body : data,
+            method : "POST",
+            mode : "cors"
+        };
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(response => window.location.reload())
+          }
+</script>
+</body>
+</html>
