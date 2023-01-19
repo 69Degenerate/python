@@ -47,6 +47,8 @@
         </tr>
     </table>
 </center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script>
     read()
     let dd;
@@ -63,10 +65,13 @@
         for(let i = 0 ;i<data.length;i++){
         document.getElementById('data').innerHTML+=`
         <tr>
-            <td><center>`+data[i].r+`</center></td>
-            <td><center>`+data[i].n+`</center></td>
-            <td><center>`+data[i].e+`</center></td>
-            <td><center>`+data[i].d+`</center></td>
+            <td><center><input value=`+data[i].n+` type="text" name="name" id="name`+data[i].id+`"></center></td>
+            <td><center><input value=`+data[i].r+` type="number" name="roll" id="num`+data[i].id+`"></center></td>
+            <td><center><input value=`+data[i].e+` type="text" name="mail" id="mail`+data[i].id+`"></center></td>
+            <td><center><input value=`+data[i].d+` type="text" name="mail" id="dept`+data[i].id+`"></center></td>
+            <td id="`+data[i].id+`"><center><a href="http://127.0.0.1:8000/d/`+data[i].id+`">delete</a></center></td>
+            <td id="`+data[i].id+`"><center><a href="#x" onclick="update(`+data[i].id+`)">update</a></center></td>
+
         </tr>
         `;    
         }
@@ -82,15 +87,15 @@
             <th>roll_no</th>
             <th>name</th>
             <th>email</th>
-            <th>dept</th>
+            <th>dept</th>data[i].id
         </tr>`;
         for(let i = 0 ;i<data.length;i++){
         document.getElementById('data').innerHTML+=`
         <tr>
-            <td><center>`+data[i].r+`</center></td>
-            <td><center>`+data[i].n+`</center></td>
-            <td><center>`+data[i].e+`</center></td>
-            <td><center>`+data[i].d+`</center></td>
+            <td id="`+data[i].id+`"><center>`+data[i].r+`</center></td>
+            <td id="`+data[i].id+`"><center>`+data[i].n+`</center></td>
+            <td id="`+data[i].id+`"><center>`+data[i].e+`</center></td>
+            <td id="`+data[i].id+`"><center>`+data[i].d+`</center></td>
         </tr>
         `;    
         }
@@ -114,6 +119,34 @@
     }
     const csrftoken = getCookie('csrftoken');
     
+
+    async function update(pk){
+        name='name'+pk;
+        roll='num'+pk;
+        email='mail'+pk;
+
+        let data={
+            "n": document.getElementById(name).value,
+            "r": document.getElementById(roll).value,
+            "e": document.getElementById(email).value,
+            "d": document.getElementById('dept'+pk).value
+        }
+        url="http://127.0.0.1:8000/u/"+pk
+        console.log(data);
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(response => window.location.reload())
+        
+    }
+
 
     async function send(search){
         var n=document.getElementById("name").value;
