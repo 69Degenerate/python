@@ -22,3 +22,4 @@ import pandas as pd
 # }
 # df = pd.DataFrame(data)
 # df.groupby('sport')['players'].sum().plot(kind="pie")
+# plt.show()

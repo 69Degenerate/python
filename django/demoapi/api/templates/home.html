@@ -65,8 +65,8 @@
         for(let i = 0 ;i<data.length;i++){
         document.getElementById('data').innerHTML+=`
         <tr>
-            <td><center><input value=`+data[i].n+` type="text" name="name" id="name`+data[i].id+`"></center></td>
             <td><center><input value=`+data[i].r+` type="number" name="roll" id="num`+data[i].id+`"></center></td>
+            <td><center><input value=`+data[i].n+` type="text" name="name" id="name`+data[i].id+`"></center></td>
             <td><center><input value=`+data[i].e+` type="text" name="mail" id="mail`+data[i].id+`"></center></td>
             <td><center><input value=`+data[i].d+` type="text" name="mail" id="dept`+data[i].id+`"></center></td>
             <td id="`+data[i].id+`"><center><a href="http://127.0.0.1:8000/d/`+data[i].id+`">delete</a></center></td>
@@ -87,17 +87,20 @@
             <th>roll_no</th>
             <th>name</th>
             <th>email</th>
-            <th>dept</th>data[i].id
+            <th>dept</th>
         </tr>`;
         for(let i = 0 ;i<data.length;i++){
-        document.getElementById('data').innerHTML+=`
-        <tr>
-            <td id="`+data[i].id+`"><center>`+data[i].r+`</center></td>
-            <td id="`+data[i].id+`"><center>`+data[i].n+`</center></td>
-            <td id="`+data[i].id+`"><center>`+data[i].e+`</center></td>
-            <td id="`+data[i].id+`"><center>`+data[i].d+`</center></td>
-        </tr>
-        `;    
+            document.getElementById('data').innerHTML+=`
+            <tr>
+                <td><center><input value=`+data[i].r+` type="number" name="roll" id="num`+data[i].id+`"></center></td>
+                <td><center><input value=`+data[i].n+` type="text" name="name" id="name`+data[i].id+`"></center></td>
+                <td><center><input value=`+data[i].e+` type="text" name="mail" id="mail`+data[i].id+`"></center></td>
+                <td><center><input value=`+data[i].d+` type="text" name="mail" id="dept`+data[i].id+`"></center></td>
+                <td id="`+data[i].id+`"><center><a href="http://127.0.0.1:8000/d/`+data[i].id+`">delete</a></center></td>
+                <td id="`+data[i].id+`"><center><a href="#x" onclick="update(`+data[i].id+`)">update</a></center></td>
+    
+            </tr>
+            `;    
         }
     }
 
