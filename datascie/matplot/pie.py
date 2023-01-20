@@ -15,6 +15,7 @@ import pandas as pd
 # plt.legend()
 # plt.show()
 
+
 # # method 2 to plot pie chart
 # data = {
 #     'sport': ["Soccer", "Tennis", "Soccer", "Hockey"],
