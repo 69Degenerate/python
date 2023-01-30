@@ -11,6 +11,7 @@ def login(request):
             re=logs.objects.filter(uname=p,pas=p)
             print(re)
             if re:
+                request.session['user_id'] = re.id
                 return redirect("/home")
                 # return render(request,"home.html")
             else:
@@ -47,4 +48,7 @@ def create(request):
 
 
 def home(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect(login)
     return render(request,'home.html')
